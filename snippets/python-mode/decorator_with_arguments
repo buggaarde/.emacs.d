@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: decarg
+# key: decarg
+# --
+def ${1:decorator}(${2:*args, **kwargs}):
+    def ${3:outer_wrapper}(${4:func}):
+        @wraps($4)
+	def func_wrapper(*args, **kwargs):
+	    $0pass
+	return func_wrapper
+    return $3

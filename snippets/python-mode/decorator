@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: dec
+# key: dec
+# --
+def ${1:decorator}(${2:func}):
+    @wraps($2)
+    def func_wrapper(*args, **kwargs):
+	$0pass
+    return func_wrapper
+	    

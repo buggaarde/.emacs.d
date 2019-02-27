@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: left-square-brackets
+# key: ls
+# --
+\left[$0\right]

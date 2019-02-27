@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: table 
+# key: tbl
+# --
+\begin{table}
+\caption{\label{tbl:${1:label}}}
+\begin{center}
+\begin{tabular}{${2:c|c|c}}
+\hline
+$0 &  &  \\\
+\end{tabular}
+\end{center}
+\end{table}

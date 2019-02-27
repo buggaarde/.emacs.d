@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: left-parentheses
+# key: lp
+# --
+\left($0\right)
