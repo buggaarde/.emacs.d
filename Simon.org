@@ -1,0 +1,321 @@
+#+TITLE: Simon Bugge Siggaard's Emacs configuration
+#+STARTUP: overview hidestars
+
+* Configuration
+<<babel-init>>   
+** Baseline Emacs setup
+*** Startup
+Start Emacs in full-screen
+#+begin_src emacs-lisp
+  (custom-set-variables
+   '(initial-frame-alist (quote ((fullscreen . maximized)))))
+#+end_src
+
+Remove toolbar, menu bar and scroll bar.
+#+begin_src emacs-lisp
+  (when window-system
+    (tooltip-mode -1)
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1))
+#+end_src
+
+Removes the start screen
+#+begin_src emacs-lisp  
+  (setq inhibit-splash-screen t)  
+#+end_src
+
+*** Appearance (color theme, fonts)
+**** Color theme
+#+begin_src emacs-lisp
+  (set-background-color "black")
+  (set-foreground-color "white")
+  (set-face-background 'region "#464740")
+  (set-face-background 'highlight "#111111")
+  (set-face-background 'show-paren-match "#333399")
+  (set-face-background 'show-paren-mismatch "red")
+#+end_src
+
+**** Fonts
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil :font "Monaco")
+#+end_src
+
+*** OS specific customizations
+For some reason, the danish keyboard setting are not always on by defualt in emacs, so we have to tell it.
+#+begin_src emacs-lisp
+  (require 'iso-transl)
+#+end_src
+
+**** MacOS
+Check whether we run MacOSX, and rebind keys accordingly
+#+begin_src emacs-lisp
+  (if (eq system-type 'darwin)
+	  (progn
+		(setq default-input-method "MacOSX")
+		(setq mac-option-modifier 'super)
+		(setq mac-command-modifier 'meta)
+		(setq ns-function-modifier 'hyper)
+		(define-key key-translation-map (kbd "s-8") (kbd "["))
+		(define-key key-translation-map (kbd "s-(") (kbd "{"))
+		(define-key key-translation-map (kbd "s-9") (kbd "]"))
+		(define-key key-translation-map (kbd "s-)") (kbd "}"))
+		(define-key key-translation-map (kbd "s-7") (kbd "|"))
+		(define-key key-translation-map (kbd "s-/") (kbd "\\"))
+		(define-key key-translation-map (kbd "M-s-7") (kbd "M-|")))
+  )
+#+end_src
+
+*** Basic editing
+We want to remove transient mark mode
+#+begin_src emacs-lisp
+  (transient-mark-mode 1)
+#+end_src
+
+Line/column-number in every mode-line
+#+begin_src emacs-lisp
+  (line-number-mode 1)
+  (column-number-mode 1)
+#+end_src
+
+Match parentheses automatically
+#+begin_src emacs-lisp
+  (electric-pair-mode 1)
+#+end_src
+
+Highlight matching parentheses.
+#+begin_src emacs-lisp
+  (show-paren-mode 1)
+  (setq show-paren-delay 0)
+#+end_src
+
+Sacha Chuang's smarter-move-to-beginning-of-line:
+#+begin_src emacs-lisp
+   ;; SMARTER MOVE-TO-BEGINNING-OF-LINE
+  (defun sacha/smarter-move-beginning-of-line (arg)
+    "Move point back to indentation of beginning of line.
+
+  Move point to the first non-whitespace character on this line.
+  If point is already there, move to the beginning of the line.
+  Effectively toggle between the first non-whitespace character and
+  the beginning of the line.
+
+  If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+  point reaches the beginning or end of the buffer, stop there."
+    (interactive "^p")
+    (setq arg (or arg 1))
+
+    ;; Move lines first
+    (when (/= arg 1)
+      (let ((line-move-visual nil))
+        (forward-line (1- arg))))
+
+    (let ((orig-point (point)))
+      (back-to-indentation)
+      (when (= orig-point (point))
+        (move-beginning-of-line 1))))
+
+  ;; remap C-a to `smarter-move-beginning-of-line'
+  (global-set-key [remap move-beginning-of-line]
+                  'sacha/smarter-move-beginning-of-line)
+  (global-set-key [remap org-beginning-of-line]
+                  'sacha/smarter-move-beginning-of-line)
+#+end_src
+
+*** Quality of life improvements
+**** Attempt to split horizontally a bit more
+#+begin_src emacs-lisp
+  (setq split-height-threshold nil)
+  (setq split-width-threshold 0)
+#+end_src
+
+**** Set default tab width to 4 spaces
+#+begin_src emacs-lisp
+  (setq-default tab-width 4)
+#+end_src
+
+**** We want the current line to be highlighted but only in the selected buffer
+#+begin_src emacs-lisp
+  (global-hl-line-mode 1)
+  (setq global-hl-line-sticky-flag nil)
+#+end_src
+
+**** Make the cursor line instead of a block
+#+begin_src emacs-lisp
+  (setq-default cursor-type 'bar)
+#+end_src
+
+**** Stops the cursor from blinking
+#+begin_src emacs-lisp
+  (blink-cursor-mode -1)
+#+end_src
+
+**** Having to type "yes" or "no" every time is annoying, change to just hit 'y' or 'n'.
+#+begin_src emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+**** Uniquify buffer names
+#+begin_src emacs-lisp
+  '(uniquify-buffer-name-style
+    (quote post-forward) nil (uniquify))
+#+end_src
+
+**** Treat sub-words as individual words
+#+begin_src emacs-lisp
+  (use-package subword
+	:ensure t
+	:config
+	(add-hook 'prog-mode-hook 'subword-mode))
+#+end_src
+
+**** Better window switching (ace-window)
+#+begin_src emacs-lisp
+  (use-package ace-window
+	:ensure t
+	:bind (("C-x o" . ace-window))
+	:config
+	(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+#+end_src
+
+*** Make sure to get packages from melpa
+#+begin_src emacs-lisp
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (unless (assoc-default "melpa" package-archives)
+    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+    (package-refresh-contents))
+#+end_src
+
+*** Make sure use-package is installed
+#+begin_src emacs-lisp
+  (dolist (pack '(use-package diminish))
+	(unless (package-installed-p pack)
+	  (package-install pack)))
+
+  (require 'use-package)
+  (setq use-package-verbose nil)
+#+end_src
+
+** General UI and navigation
+*** Minibuffer navigation and search
+#+begin_src emacs-lisp
+  (use-package ivy
+	:ensure t
+	:diminish ivy-mode
+
+	:init
+	(use-package flx
+	  :ensure t)
+
+	:config
+	(ivy-mode 1)
+
+	(setq ivy-use-virtual-buffers t)
+	(setq ivy-virtual-abbreviate 'full)
+
+	(setq ivy-re-builders-alist
+		  '((ivy-switch-buffer . ivy--regex-plus)
+			(t . ivy--regex-fuzzy)))
+
+	(use-package counsel
+	  :ensure t
+	  :bind (("C-s" . swiper)
+			 ("M-x" . counsel-M-x))))
+#+end_src
+
+** Basic programming utilities and setups
+*** Paredit for emacs-lisp (and other lisps)
+#+begin_src emacs-lisp
+  (use-package paredit
+    :ensure t
+    :init
+    (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+    (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+    (add-hook 'cider-mode-hook 'enable-paredit-mode))
+#+end_src
+
+*** Autocompletion
+#+begin_src emacs-lisp
+    (use-package auto-complete
+      :config
+      (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+      (ac-set-trigger-key "TAB")
+      (ac-set-trigger-key "<tab>")
+      :diminish auto-complete-mode)
+
+    (use-package auto-complete-config
+      :config
+      (ac-config-default))  
+#+end_src
+
+*** Snippets
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :diminish yas-minor-mode
+    :config
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+    (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
+    (setq yas-verbosity 1)
+    (yas-global-mode t))
+#+end_src
+
+*** Commenting
+#+begin_src emacs-lisp
+  (use-package comment-dwim-2
+	:ensure t
+	:bind (("M-;" . comment-dwim-2)))
+#+end_src
+
+*** magit
+#+begin_src emacs-lisp
+  (use-package magit
+	:ensure t
+	:bind (("C-c g" . magit-status)))
+#+end_src
+
+** Advanced programming utilities and setups
+*** golang
+#+begin_src emacs-lisp
+  (use-package go-mode
+	:ensure t
+	:load-path "/Users/simonbuggesiggaard/go/src/github.com/dougm/goflymake"
+
+	:init
+	(setenv "GOPATH" "/Users/simonbuggesiggaard/go")
+	(use-package flycheck
+	  :ensure t)
+	(use-package flymake
+	  :ensure t)
+	
+	:config
+	(require 'go-flymake)
+	(require 'go-flycheck)
+
+	(setq exec-path (append exec-path
+							  (list (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
+							  (list (expand-file-name (concat (getenv "GOPATH") "/src/github.com/nsf/gocode")))))
+	(setq gofmt-command (concat (getenv "GOPATH") "/bin/goimports"))
+	(setq godef-command (concat (getenv "GOPATH") "/bin/godef"))
+
+	(add-hook 'before-save-hook 'gofmt-before-save)
+
+	(use-package go-autocomplete
+	  :load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs"
+	  :config
+	  (add-hook 'completion-at-point-functions 'go-complete-at-point))
+
+	:bind (("C-." . 'godef-jump)
+		   ("C-," . 'godef-jump-other-window)
+		   ("C--" . 'pop-tag-mark)))
+
+#+end_src
+
+*** markdown (empty)
+*** docker
+#+begin_src emacs-lisp
+  (use-package dockerfile-mode
+	:ensure t)
+#+end_src
+
