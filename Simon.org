@@ -312,9 +312,10 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	  :config
 	  (add-hook 'completion-at-point-functions 'go-complete-at-point))
 
-	:bind (("C-." . 'godef-jump)
-		   ("C-," . 'godef-jump-other-window)
-		   ("C--" . 'pop-tag-mark)))
+	:bind (:map go-mode-map
+		  ("C-." . 'godef-jump)
+		  ("C-:" . 'godef-jump-other-window)
+		  ("C-," . 'pop-tag-mark)))
 
 #+end_src
 
