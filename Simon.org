@@ -275,6 +275,12 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	:bind (("C-c g" . magit-status)))
 #+end_src
 
+*** Expand region
+#+begin_src emacs-lisp
+  (use-package expand-region
+	:ensure t
+	:bind (("C-æ" . er/expand-region)))
+#+end_src
 ** Advanced programming utilities and setups
 *** golang
 #+begin_src emacs-lisp
