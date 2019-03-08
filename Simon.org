@@ -232,6 +232,12 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 			 ("M-x" . counsel-M-x))))
 #+end_src
 
+*** Avy jump mode
+#+begin_src emacs-lisp
+  (use-package avy
+	:ensure t
+	:bind (("C-ø" . avy-goto-subword-1)))
+#+end_src
 ** Basic programming utilities and setups
 *** Paredit for emacs-lisp (and other lisps)
 #+begin_src emacs-lisp
