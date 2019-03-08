@@ -291,22 +291,11 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 #+begin_src emacs-lisp
   (use-package go-mode
 	:ensure t
-	:load-path "/Users/simonbuggesiggaard/go/src/github.com/dougm/goflymake"
-
 	:init
 	(setenv "GOPATH" "/Users/simonbuggesiggaard/go")
-	(use-package flycheck
-	  :ensure t)
-	(use-package flymake
-	  :ensure t)
-	
-	:config
-	(require 'go-flymake)
-	(require 'go-flycheck)
+	(add-to-list 'exec-path (getenv "GOPATH"))
 
-	(setq exec-path (append exec-path
-							  (list (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
-							  (list (expand-file-name (concat (getenv "GOPATH") "/src/github.com/nsf/gocode")))))
+	:config
 	(setq gofmt-command (concat (getenv "GOPATH") "/bin/goimports"))
 	(setq godef-command (concat (getenv "GOPATH") "/bin/godef"))
 
@@ -317,10 +306,14 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	  :config
 	  (add-hook 'completion-at-point-functions 'go-complete-at-point))
 
+	(use-package flycheck-golangci-lint
+	  :ensure t
+	  :hook (go-mode . flycheck-golangci-lint-setup))
+
 	:bind (:map go-mode-map
-		  ("C-." . 'godef-jump)
-		  ("C-:" . 'godef-jump-other-window)
-		  ("C-," . 'pop-tag-mark)))
+				("C-." . 'godef-jump)
+				("C-:" . 'godef-jump-other-window)
+				("C-," . 'pop-tag-mark)))
 
 #+end_src
 
