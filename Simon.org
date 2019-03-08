@@ -62,8 +62,17 @@ Check whether we run MacOSX, and rebind keys accordingly
 		(define-key key-translation-map (kbd "s-)") (kbd "}"))
 		(define-key key-translation-map (kbd "s-7") (kbd "|"))
 		(define-key key-translation-map (kbd "s-/") (kbd "\\"))
-		(define-key key-translation-map (kbd "M-s-7") (kbd "M-|")))
-  )
+		(define-key key-translation-map (kbd "M-s-7") (kbd "M-|"))))
+#+end_src
+
+MacOS is kinda screwing with the PATH, so we need to fix that
+#+begin_src emacs-lisp
+  (if (eq system-type 'darwin)
+	  (progn
+		(unless (package-installed-p exec-path-from-shell)
+		  (package-install exec-path-from-shell))
+		(exec-path-from-shell-initialize)))
+  
 #+end_src
 
 *** Basic editing
