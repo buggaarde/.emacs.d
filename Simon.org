@@ -282,6 +282,11 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	:bind (("C-æ" . er/expand-region)))
 #+end_src
 ** Advanced programming utilities and setups
+*** flycheck
+#+begin_src emacs-lisp
+  (use-package flycheck
+	:ensure t)
+#+end_src
 *** golang
 #+begin_src emacs-lisp
   (use-package go-mode
