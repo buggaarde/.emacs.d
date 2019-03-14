@@ -149,6 +149,7 @@ Check whether we run MacOSX, and rebind keys accordingly
 		(define-key key-translation-map (kbd "s-)") (kbd "}"))
 		(define-key key-translation-map (kbd "s-7") (kbd "|"))
 		(define-key key-translation-map (kbd "s-/") (kbd "\\"))
+		(define-key key-translation-map (kbd "s-'") (kbd "@"))
 		(define-key key-translation-map (kbd "M-s-7") (kbd "M-|"))))
 #+end_src
 
