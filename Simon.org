@@ -25,6 +25,16 @@ Removes the start screen
   (setq inhibit-splash-screen t)  
 #+end_src
 
+*** Make sure use-package is installed
+#+begin_src emacs-lisp
+  (dolist (pack '(use-package diminish))
+	(unless (package-installed-p pack)
+	  (package-install pack)))
+
+  (require 'use-package)
+  (require 'diminish)
+  (setq use-package-verbose nil)
+#+end_src
 *** Appearance (color theme, fonts)
 **** Color theme
 #+begin_src emacs-lisp
@@ -195,15 +205,7 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
     (package-refresh-contents))
 #+end_src
 
-*** Make sure use-package is installed
-#+begin_src emacs-lisp
-  (dolist (pack '(use-package diminish))
-	(unless (package-installed-p pack)
-	  (package-install pack)))
 
-  (require 'use-package)
-  (setq use-package-verbose nil)
-#+end_src
 
 ** General UI and navigation
 *** Minibuffer navigation and search
