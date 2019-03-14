@@ -399,9 +399,7 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	(add-hook 'before-save-hook 'gofmt-before-save)
 
 	(use-package go-autocomplete
-	  :load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs"
-	  :config
-	  (add-hook 'completion-at-point-functions 'go-complete-at-point))
+	  :load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs")
 
 	(use-package flycheck-golangci-lint
 	  :ensure t
