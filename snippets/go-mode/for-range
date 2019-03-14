@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for-range
+# key: forr
+# --
+for ${1:var} := range ${2:iterable} {
+	$0
+}

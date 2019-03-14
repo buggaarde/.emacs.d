@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: proto-marshal
+# key: pmar
+# --
+$1
+b, err := proto.Marshal(${1:$(nth 0 (split-string yas-text))})
+if err != nil {
+	${2:n}.Error(err)
+}
+$2.Publish("${1:$(if (< 2 (length (split-string yas-text)))
+					 (downcase (nth 0 (last (split-string (nth 0 (split-string (nth 2 (split-string yas-text)) "{")) "&"))))
+  					 (nth 0 (split-string yas-text)))}", b)
+$0

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: select
+# key: select
+# --
+for {
+	select {
+	${1:default}:
+		$0
+	}
+}
