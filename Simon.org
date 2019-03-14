@@ -35,6 +35,7 @@ Removes the start screen
   (require 'diminish)
   (setq use-package-verbose nil)
 #+end_src
+
 *** Appearance (color theme, fonts)
 **** Color theme
 #+begin_src emacs-lisp
@@ -157,10 +158,9 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 #+begin_src emacs-lisp
   (if (eq system-type 'darwin)
 	  (progn
-		(unless (package-installed-p exec-path-from-shell)
-		  (package-install exec-path-from-shell))
-		(exec-path-from-shell-initialize)))
-  
+		(unless (package-installed-p 'exec-path-from-shell)
+		  (package-install 'exec-path-from-shell))
+		(exec-path-from-shell-initialize)))  
 #+end_src
 
 *** Basic editing
@@ -283,8 +283,6 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
     (package-refresh-contents))
 #+end_src
 
-
-
 ** General UI and navigation
 *** Minibuffer navigation and search
 #+begin_src emacs-lisp
@@ -318,6 +316,7 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	:ensure t
 	:bind (("C-ø" . avy-goto-subword-1)))
 #+end_src
+
 ** Basic programming utilities and setups
 *** Paredit for emacs-lisp (and other lisps)
 #+begin_src emacs-lisp
@@ -332,16 +331,17 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 
 *** Autocompletion
 #+begin_src emacs-lisp
-    (use-package auto-complete
-      :config
-      (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-      (ac-set-trigger-key "TAB")
-      (ac-set-trigger-key "<tab>")
-      :diminish auto-complete-mode)
+  (use-package auto-complete
+	:config
+	(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+	(ac-set-trigger-key "TAB")
+	(ac-set-trigger-key "<tab>")
+	:diminish auto-complete-mode)
 
-    (use-package auto-complete-config
-      :config
-      (ac-config-default))  
+  (use-package auto-complete-config
+	:after go-autocomplete
+	:config
+	(ac-config-default))  
 #+end_src
 
 *** Snippets
@@ -376,6 +376,7 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 	:ensure t
 	:bind (("C-æ" . er/expand-region)))
 #+end_src
+
 ** Advanced programming utilities and setups
 *** flycheck
 #+begin_src emacs-lisp
@@ -410,7 +411,6 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 				("C-." . 'godef-jump)
 				("C-:" . 'godef-jump-other-window)
 				("C-," . 'pop-tag-mark)))
-
 #+end_src
 
 *** markdown
