@@ -388,11 +388,12 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 #+begin_src emacs-lisp
   (use-package go-mode
 	:ensure t
+	:after (flycheck auto-complete)
 	:init
 	(setenv "GOPATH" "/Users/simonbuggesiggaard/go")
-	(add-to-list 'exec-path (getenv "GOPATH"))
 
 	:config
+	(add-to-list 'exec-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/nsf/gocode")))
 	(setq gofmt-command (concat (getenv "GOPATH") "/bin/goimports"))
 	(setq godef-command (concat (getenv "GOPATH") "/bin/godef"))
 
