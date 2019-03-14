@@ -380,7 +380,9 @@ Sacha Chuang's smarter-move-to-beginning-of-line:
 *** flycheck
 #+begin_src emacs-lisp
   (use-package flycheck
-	:ensure t)
+	:ensure t
+	:config
+	(global-flycheck-mode))
 #+end_src
 *** golang
 #+begin_src emacs-lisp
