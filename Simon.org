@@ -495,3 +495,18 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 			   (cljr-add-keybindings-with-prefix "C-C m"))
 			 (add-hook 'clojure-mode-hook #'my-clojure-hook))))
 #+end_src
+
+*** org
+#+begin_src emacs-lisp
+  (use-package org
+	:ensure t
+
+	:config
+	(use-package ox-pandoc
+	  :ensure t
+
+	  :config
+	  ;; set column-width for README.md exports
+	  (setq org-pandoc-options-for-gfm '((wrap . "preserve")))))
+#+end_src
+
