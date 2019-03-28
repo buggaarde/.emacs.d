@@ -300,6 +300,26 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 #+end_src
 
 ** General UI and navigation
+*** Powerline
+#+begin_src emacs-lisp
+  (use-package spaceline  
+  :ensure t
+  :init
+  (progn
+	  (require 'spaceline-config)
+	  (setq powerline-default-separator 'slant)
+	  (setq spaceline-workspace-numbers-unicode t)
+	  (setq spaceline-separator-dir-left '(left . left))
+	  (setq spaceline-separator-dir-right '(right . right))
+	  (setq powerline-height 13)
+	  ;;(spaceline-toggle-window-number-on)
+	  (spaceline-toggle-buffer-modified-on)
+	  (spaceline-toggle-major-mode-on)
+	  ;;(spaceline-toggle-hud-on)
+	  (spaceline-toggle-projectile-root-on)
+	  (spaceline-emacs-theme)))
+#+end_src
+
 *** Minibuffer navigation and search
 #+begin_src emacs-lisp
   (use-package ivy
