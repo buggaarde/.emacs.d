@@ -141,6 +141,16 @@ For some reason, the danish keyboard setting are not always on by defualt in ema
   (require 'iso-transl)
 #+end_src
 
+*** Backups
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (setq auto-save-default nil)
+  (setq create-lockfiles nil)
+  (setq delete-old-versions -1)
+  (setq version-control t)
+  (setq vc-make-backup-files t)
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+end_src
 **** MacOS
 Check whether we run MacOSX, and rebind keys accordingly
 #+begin_src emacs-lisp
