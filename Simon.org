@@ -57,7 +57,7 @@ Removes the start screen
 ***** Fira Code
 Fira is an open source font with nice ligatures
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :font "Fira Code" :height 130)
+  (set-face-attribute 'default nil :font "Fira Code" :height 150)
 #+end_src
 
 ****** Fira Code ligatures
@@ -95,7 +95,7 @@ popular editors.
 	  "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
 	  "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
 	  "x" ":" "+" "+" "*"))
-
+ 
   (defvar fira-code-mode--old-prettify-alist)
 
   (defun fira-code-mode--enable ()
