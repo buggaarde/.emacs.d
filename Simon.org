@@ -510,3 +510,33 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 	  (setq org-pandoc-options-for-gfm '((wrap . "preserve")))))
 #+end_src
 
+** Misc
+*** Writing
+#+begin_src emacs-lisp
+  (use-package writeroom-mode
+	:ensure t)
+
+  (use-package writegood-mode
+	:ensure t
+	:after writeroom-mode
+
+	:init
+	(defun activate-write ()
+	  (when (and (stringp buffer-file-name)
+				 (string-match "\\whengodsdie.org\\'" buffer-file-name))
+		(progn (writeroom-mode)
+			   (writegood-mode)
+			   (visual-line-mode)
+			   (flyspell-mode))))
+
+	:bind (:map visual-line-mode-map
+				("C-a" . beginning-of-visual-line))
+
+	:hook ((find-file . activate-write)))
+#+end_src
+
+*** DnD
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/sitelisp/")
+  (require 'ox-dnd)
+#+end_src
