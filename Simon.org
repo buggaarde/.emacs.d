@@ -439,7 +439,7 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 	(setenv "GOPATH" "/Users/simonbuggesiggaard/go")
 
 	:config
-	(add-to-list 'exec-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/nsf/gocode")))
+	(add-to-list 'exec-path (concat (getenv "GOPATH") "/src/github.com/nsf/gocode"))
 	(setq gofmt-command (concat (getenv "GOPATH") "/bin/goimports"))
 	(setq godef-command (concat (getenv "GOPATH") "/bin/godef"))
 
