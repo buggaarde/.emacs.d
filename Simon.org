@@ -180,29 +180,29 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 #+end_src
 
 *** Basic editing
-We want to remove transient mark mode
+**** We want to remove transient mark mode
 #+begin_src emacs-lisp
   (transient-mark-mode 1)
 #+end_src
 
-Line/column-number in every mode-line
+**** Line/column-number in every mode-line
 #+begin_src emacs-lisp
   (line-number-mode 1)
   (column-number-mode 1)
 #+end_src
 
-Match parentheses automatically
+**** Match parentheses automatically
 #+begin_src emacs-lisp
   (electric-pair-mode 1)
 #+end_src
 
-Highlight matching parentheses.
+**** Highlight matching parentheses.
 #+begin_src emacs-lisp
   (show-paren-mode 1)
   (setq show-paren-delay 0)
 #+end_src
 
-Sacha Chuang's smarter-move-to-beginning-of-line:
+**** Sacha Chuang's smarter-move-to-beginning-of-line:
 #+begin_src emacs-lisp
    ;; SMARTER MOVE-TO-BEGINNING-OF-LINE
   (defun sacha/smarter-move-beginning-of-line (arg)
