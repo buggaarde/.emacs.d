@@ -25,6 +25,12 @@ Removes the start screen
   (setq inhibit-splash-screen t)  
 #+end_src
 
+*** Personal information
+#+begin_src emacs-lisp
+  (setq user-full-name "Simon Bugge Siggaard"
+        user-mail-address "simsig@gmail.com")
+#+end_src
+
 *** Make sure use-package is installed
 #+begin_src emacs-lisp
   (dolist (pack '(use-package diminish))
