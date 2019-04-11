@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: options
+# binding: C-c C-g o
+# --
+type Options struct {
+	${1:Opt type}
+}
+
+type Option func(*Options)
+
+${1:$(setters-from yas-text)}

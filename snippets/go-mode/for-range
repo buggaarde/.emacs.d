@@ -2,6 +2,6 @@
 # name: for-range
 # key: forr
 # --
-for ${1:var} := range ${2:iterable} {
+for ${1:_}${1:$(if (not (string= "" (yas-field-value 1))) ", " "")}${2:item} := range ${3:slice} {
 	$0
 }

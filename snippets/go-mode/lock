@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: lock
+# binding: C-c C-g l
+# --
+${1:o.}mutex.Lock()
+`yas-selected-text`
+$1mutex.Unlock()
