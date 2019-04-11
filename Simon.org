@@ -5,8 +5,14 @@
 <<babel-init>>   
 ** Baseline Emacs setup
 *** Startup
-Start Emacs in full-screen
+Start Emacs in full-screen on second monitor, if there
 #+begin_src emacs-lisp
+  (setq workarea (cdr (assoc 'workarea (nth 0 (last (display-monitor-attributes-list))))))
+  (setq width-offset (nth 0 workarea))
+  (setq height-offset (nth 1 workarea))
+
+  (setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
+
   (custom-set-variables
    '(initial-frame-alist (quote ((fullscreen . maximized)))))
 #+end_src
