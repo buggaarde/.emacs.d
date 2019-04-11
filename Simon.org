@@ -478,7 +478,16 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 *** docker
 #+begin_src emacs-lisp
   (use-package dockerfile-mode
-	:ensure t)
+	:ensure t
+	:defer t)
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package docker-compose-mode
+	:ensure t
+	:defer t)
+#+end_src
+
 #+end_src
 
 *** clojure
