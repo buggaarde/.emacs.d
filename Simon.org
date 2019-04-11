@@ -440,7 +440,7 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 #+begin_src emacs-lisp
   (use-package go-mode
 	:ensure t
-	:after (flycheck auto-complete)
+
 	:init
 	(setenv "GOPATH" "/Users/simonbuggesiggaard/go")
 
@@ -449,7 +449,9 @@ MacOS is kinda screwing with the PATH, so we need to fix that
 	(setq gofmt-command (concat (getenv "GOPATH") "/bin/goimports"))
 	(setq godef-command (concat (getenv "GOPATH") "/bin/godef"))
 
-	(add-hook 'before-save-hook 'gofmt-before-save)
+	(add-hook 'go-mode-hook '(lambda ()
+							   (add-hook 'before-save-hook 'gofmt-before-save)))
+
 
 	(use-package go-autocomplete
 	  :load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs")
