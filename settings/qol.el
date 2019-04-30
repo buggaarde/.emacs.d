@@ -15,6 +15,8 @@
 ;; Stops the cursor from blinking
 (blink-cursor-mode -1)
 
+;; Delete selections by just typing
+(delete-selection-mode 1)
 
 ;; Just hit 'y' or 'n' instead of typing "yes" or "no" every time
 (defalias 'yes-or-no-p 'y-or-n-p)
