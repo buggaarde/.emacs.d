@@ -89,6 +89,7 @@
 (require 'setup-go)
 (require 'setup-markdown)
 (require 'setup-docker)
+(require 'setup-protobuf)
 (require 'setup-python)
 (require 'setup-clojure)
 (require 'setup-org)
