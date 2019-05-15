@@ -7,11 +7,11 @@
 (set-face-background 'show-paren-mismatch "red")
 
 ;; Set fonts
-(set-face-attribute 'default nil :font "Fira Code" :height 150)
-(require 'fira-code-mode)
-(use-package fira-code-mode
-  :diminish fira-code-mode
-  :hook (prog-mode . fira-code-mode))
+(set-face-attribute 'default nil :font "Monaco" :height 150)
+;; (require 'fira-code-mode)
+;; (use-package fira-code-mode
+;;   :diminish fira-code-mode
+;;   :hook (prog-mode . fira-code-mode))
 
 ;; Load Powerline
 (require 'setup-powerline)
