@@ -43,6 +43,6 @@
 ;; Avy jump mode
 (use-package avy
   :ensure t
-  :bind (("C-ø" . avy-goto-subword-1)))
+  :bind (("C-æ" . avy-goto-subword-1)))
 
 (provide 'qol)
