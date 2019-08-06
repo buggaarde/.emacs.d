@@ -74,6 +74,7 @@
 
 ;; Setup search and minibuffer navigation
 (require 'setup-ivy)
+(require 'setup-projectile)
 
 ;; Setup basic programming utilities
 (require 'setup-paredit)
@@ -83,6 +84,10 @@
 (require 'setup-magit)
 (require 'setup-expand-region)
 (require 'setup-multiple-cursors)
+
+;; Setup Language Server Protocol and TabNine
+(require 'setup-lsp)
+(require 'setup-tabnine)
 
 ;; Specific programming languages and modes
 (require 'setup-flycheck)
@@ -97,6 +102,9 @@
 ;; Misc
 (require 'setup-writing)
 (require 'setup-dnd)
+
+;; EVIL
+;; (require 'setup-evil)
 
 ;; Revert back to default GC treshold
 (setq-default gc-cons-threshold 800000)
