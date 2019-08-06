@@ -1,10 +1,8 @@
 (use-package spaceline  
   :ensure t
-  :defer t
   :init
   (progn
 	(require 'spaceline-config)
-	(setq powerline-default-separator 'slant)
 	(setq spaceline-workspace-numbers-unicode t)
 	(setq spaceline-separator-dir-left '(left . left))
 	(setq spaceline-separator-dir-right '(right . right))
