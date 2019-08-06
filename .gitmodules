@@ -1,0 +1,3 @@
+[submodule "sitelisp"]
+	path = sitelisp
+	url = https://github.com/xeals/emacs-org-dnd.git
