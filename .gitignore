@@ -1,2 +1,8 @@
 *~
 *.yas-compiled-snippets.el
+*.python-environments/
+*auto-save-list/
+/.lsp-session-v1
+/.mc-lists.el
+/elpa
+/straight
