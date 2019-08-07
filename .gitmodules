@@ -1,3 +1,6 @@
-[submodule "sitelisp"]
-	path = sitelisp
-	url = https://github.com/xeals/emacs-org-dnd.git
+[submodule "lisp/blacken"]
+	path = lisp/blacken
+	url = https://github.com/proofit404/blacken/
+[submodule "lisp/emacs-org-dnd"]
+	path = lisp/emacs-org-dnd
+	url = https://github.com/xeals/emacs-org-dnd
