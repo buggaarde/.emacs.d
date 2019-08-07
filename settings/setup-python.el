@@ -2,7 +2,6 @@
   :ensure t
 
   :init
-  (add-to-list 'load-path (expand-file-name "~/.emacs.d/sitelisp/blacken/"))
   (require 'blacken)
   
   (use-package importmagic
@@ -17,6 +16,7 @@
   (add-hook 'elpy-mode-hook '(lambda () (jedi:ac-setup)))
   (add-hook 'elpy-mode-hook 'importmagic-mode)
   (add-hook 'elpy-mode-hook 'blacken-mode)
+  (add-hook 'elpy-mode-hook '(lambda () (highlight-indentation-mode -1)))
   ;; ((elpy-mode  (highlight-indentation-mode -1))
   ;;  (elpy-mode py-yapf-enable-on-save)
   ;;  (elpy-mode jedi:setup)
