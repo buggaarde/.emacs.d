@@ -44,6 +44,7 @@
   (package-initialize))
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-refresh-contents)
 
 ;; Make sure that use-package is installed
