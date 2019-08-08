@@ -27,6 +27,8 @@
 
 ;; Set up load path
 (add-to-list 'load-path settings-dir)
+(let ((default-directory  "~/.emacs.d/lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
