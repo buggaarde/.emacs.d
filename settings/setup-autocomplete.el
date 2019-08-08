@@ -1,4 +1,5 @@
 (use-package auto-complete
+  :ensure t
   :config
   (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
   (ac-set-trigger-key "TAB")
