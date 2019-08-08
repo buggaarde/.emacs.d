@@ -40,8 +40,11 @@
 
 ;; Specify melpa
 (require 'package)
+(when (not package--initialized)
+  (package-initialize))
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+(package-refresh-contents)
 
 ;; Make sure that use-package is installed
 (dolist (pack '(use-package diminish))
