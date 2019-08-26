@@ -1,5 +1,6 @@
 (use-package projectile
   :ensure t
+  :diminish
   :after ivy
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
@@ -9,6 +10,7 @@
 
   (use-package counsel-projectile
 	:ensure t
+	:diminish counsel
 	:config
 	(counsel-mode 1)
 	(counsel-projectile-mode)))
