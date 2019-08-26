@@ -88,6 +88,7 @@
 (require 'setup-snippets)
 (require 'setup-commenting)
 (require 'setup-magit)
+(require 'setup-diff-hl)
 (require 'setup-expand-region)
 (require 'setup-multiple-cursors)
 
