@@ -6,9 +6,23 @@
 ;; (set-face-background 'show-paren-match "#333399")
 ;; (set-face-background 'show-paren-mismatch "red")
 
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :config (load-theme 'spacemacs-light t))
+;; (use-package spacemacs-common
+;;   :ensure spacemacs-theme
+;;   :config (load-theme 'spacemacs-light t))
+
+;; (use-package basic-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'basic))
+
+;; (use-package minimal-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'minimal-light))
+
+(use-package greymatters-theme
+  :ensure t
+  :config (load-theme 'greymatters))
 
 ;; Set fonts
 ;; (set-face-attribute 'default nil :font "Monaco" :height 140)
