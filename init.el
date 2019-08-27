@@ -27,6 +27,7 @@
 
 ;; Set up load path
 (add-to-list 'load-path settings-dir)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
