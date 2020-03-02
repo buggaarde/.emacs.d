@@ -1,11 +1,13 @@
 (use-package elpy
   :straight t
+  :defer t
 
   :init
   (require 'blacken)
   
   (use-package importmagic
 	:straight t
+	:defer t
 	:config
 	(setq importmagic-python-interpreter "python3"))
 

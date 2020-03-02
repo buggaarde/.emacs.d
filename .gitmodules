@@ -7,3 +7,6 @@
 [submodule "lisp/flycheck-google-cpplint"]
 	path = lisp/flycheck-google-cpplint
 	url = https://github.com/flycheck/flycheck-google-cpplint
+[submodule "lisp/gcmh"]
+	path = lisp/gcmh
+	url = https://gitlab.com/koral/gcmh/

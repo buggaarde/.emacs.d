@@ -1,15 +1,11 @@
 ;; Increase GC threshold temporarily, while init.el loads
-(setq-default gc-cons-threshold 100000000)
+(setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
+      gc-cons-percentage 0.6)
 
-;; Start Emacs in full-screen on second monitor, if there
-(setq workarea (cdr (assoc 'workarea (nth 0 (last (display-monitor-attributes-list))))))
-(setq width-offset (nth 0 workarea))
-(setq height-offset (nth 1 workarea))
-
-(setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
-
-(custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(add-hook 'emacs-startup-hook
+		  (lambda ()
+			(setq gc-cons-threshold 16777216 ; 16mb
+				  gc-cons-percentage 0.1)))
 
 ;; Remove toolbar, menu bar and scroll bar
 (when window-system
@@ -21,6 +17,17 @@
 ;; Remove splash screen
 (setq inhibit-splash-screen t)
 
+;; Start Emacs in full-screen on second monitor, if there
+(setq workarea (cdr (assoc 'workarea (nth 0 (last (display-monitor-attributes-list))))))
+(setq width-offset (nth 0 workarea))
+(setq height-offset (nth 1 workarea))
+
+(setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
+
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+
 ;; Set path to dependencies
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
@@ -31,22 +38,7 @@
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
-;; Set personal information
-(setq user-full-name "Simon Bugge Siggaard"
-	  user-mail-address "simsig@gmail.com")
-
-;; Specify melpa
-(require 'package)
-(when (not package--initialized)
-  (package-initialize))
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-(package-refresh-contents)
+(require 'performance)
 
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
@@ -67,8 +59,16 @@
 (use-package diminish
   :straight t)
 
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
 ;; Load color theme and fonts
 (require 'appearance)
+
+;; Set personal information
+(setq user-full-name "Simon Bugge Siggaard"
+	  user-mail-address "simsig@gmail.com")
 
 ;; Load OS specific settings
 (require 'iso-transl)
@@ -90,8 +90,8 @@
 (require 'qol)
 
 ;; Setup search and minibuffer navigation
-;; (require 'setup-ivy)
-(require 'setup-helm)
+(require 'setup-ivy)
+;; (require 'setup-helm)
 (require 'setup-projectile)
 
 ;; Setup basic programming utilities
@@ -126,12 +126,10 @@
 
 ;; Misc
 (require 'setup-writing)
-(require 'setup-dnd)
+;; (require 'setup-dnd)
+(require 'setup-esup)
 
 ;; EVIL
 ;; (require 'setup-evil)
 
-;; Revert back to default GC treshold
-(setq-default gc-cons-threshold 800000)
 ;;; init.el ends here
-(put 'downcase-region 'disabled nil)

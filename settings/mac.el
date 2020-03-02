@@ -13,10 +13,20 @@
       (define-key key-translation-map (kbd "s-'") (kbd "@"))
       (define-key key-translation-map (kbd "M-s-7") (kbd "M-|"))))
 
-(if (eq system-type 'darwin)
-    (progn
-      (unless (package-installed-p 'exec-path-from-shell)
-	(package-install 'exec-path-from-shell))
-      (exec-path-from-shell-initialize)))  
+(use-package exec-path-from-shell
+  :straight (exec-path-from-shell :type git :host github :repo "purcell/exec-path-from-shell"))
+
+;; (if (eq system-type 'darwin) 
+;; 	(exec-path-from-shell-initialize))  
 
 (provide 'mac)
+
+
+
+
+
+
+
+
+
+

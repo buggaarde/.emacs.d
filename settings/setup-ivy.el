@@ -1,11 +1,11 @@
 (use-package ivy
-  :ensure t
+  :straight t
   :diminish ivy-mode
 
   :init
   (use-package flx
 	:defer t
-	:ensure t)
+	:straight t)
 
   :config
   (ivy-mode 1)
@@ -18,7 +18,7 @@
   ;; 		  (t . ivy--regex-fuzzy)))
 
   (use-package counsel
-	:ensure t
+	:straight t
 	:bind (("C-s" . swiper)
 		   ("M-x" . counsel-M-x))))
 

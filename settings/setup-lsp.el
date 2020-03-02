@@ -1,11 +1,13 @@
 (use-package lsp-mode
   :straight t
+  :defer t
   :custom
   (lsp-prefer-flymake nil)
   
   :config
   (use-package lsp-ui
   	:straight t
+	:defer t
 	:custom
 	(lsp-ui-doc-delay 1.2)
 	(lsp-ui-doc-enable t)
