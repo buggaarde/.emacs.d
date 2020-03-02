@@ -1,5 +1,5 @@
 (use-package paredit
-  :ensure t
+  :straight t
   :defer t
   :hook ((emacs-lisp-mode . enable-paredit-mode)
 		 (clojure-mode . enable-paredit-mode)

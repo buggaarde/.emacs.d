@@ -1,9 +1,9 @@
 (use-package dockerfile-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package docker-compose-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (provide 'setup-docker)

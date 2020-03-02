@@ -27,14 +27,14 @@
 
 ;; Treat sub-words as individual words
 (use-package subword
-  :ensure t
+  :straight t
   :defer t
   :config
   (add-hook 'prog-mode-hook 'subword-mode))
 
 ;; Better window switching
 (use-package ace-window
-  :ensure t
+  :straight t
   :defer t
   :bind (("C-x o" . ace-window))
   :config
@@ -42,7 +42,7 @@
 
 ;; Avy jump mode
 (use-package avy
-  :ensure t
+  :straight t
   :config (setq avy-style 'words)
   :bind (("C-æ" . avy-goto-subword-1)))
 

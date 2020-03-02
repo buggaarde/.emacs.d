@@ -1,6 +1,6 @@
 (use-package writeroom-mode
   :defer t
-  :ensure t)
+  :straight t)
 
 (defun activate-write ()
 	(when (and (stringp buffer-file-name)
@@ -11,7 +11,7 @@
 			 (flyspell-mode))))
 
 (use-package writegood-mode
-  :ensure t
+  :straight t
   :defer t
   :after writeroom-mode 
 

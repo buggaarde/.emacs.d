@@ -1,5 +1,5 @@
 (use-package magit
-  :ensure t
+  :straight t
   :bind (("C-c g" . magit-status)))
 
 (provide 'setup-magit)

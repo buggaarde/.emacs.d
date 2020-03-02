@@ -1,5 +1,5 @@
 (use-package diff-hl
-  :ensure t
+  :straight t
   :config (global-diff-hl-mode)
   :hook (magit-post-refresh . diff-hl-magit-post-refresh))
 

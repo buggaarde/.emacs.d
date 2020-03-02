@@ -1,6 +1,5 @@
 (use-package multiple-cursors
-  :ensure t
-
+  :straight t
   :bind (("C-d" . mc/mark-next-word-like-this)
 		 ("C-S-d" . mc/mark-all-words-like-this)))
 

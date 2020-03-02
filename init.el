@@ -48,14 +48,24 @@
 ;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-refresh-contents)
 
-;; Make sure that use-package is installed
-(dolist (pack '(use-package diminish))
-  (unless (package-installed-p pack)
-	(package-install pack)))
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(require 'use-package)
-(require 'diminish)
-(setq use-package-verbose nil)
+;; Make sure that use-package is installed
+(straight-use-package 'use-package)
+(use-package diminish
+  :straight t)
 
 ;; Load color theme and fonts
 (require 'appearance)
@@ -94,19 +104,25 @@
 (require 'setup-expand-region)
 (require 'setup-multiple-cursors)
 
+;; Setup org-roam
+(require 'setup-org-roam)
+
 ;; Setup Language Server Protocol and TabNine
 (require 'setup-lsp)
 (require 'setup-tabnine)
 
 ;; Specific programming languages and modes
+(require 'setup-clojure)
+(require 'setup-cpp)
+(require 'setup-docker)
+(require 'setup-haskell)
+(require 'setup-elm)
 (require 'setup-flycheck)
 (require 'setup-go)
 (require 'setup-markdown)
-(require 'setup-docker)
+(require 'setup-org)
 (require 'setup-protobuf)
 (require 'setup-python)
-(require 'setup-clojure)
-(require 'setup-org)
 
 ;; Misc
 (require 'setup-writing)
@@ -118,3 +134,4 @@
 ;; Revert back to default GC treshold
 (setq-default gc-cons-threshold 800000)
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)

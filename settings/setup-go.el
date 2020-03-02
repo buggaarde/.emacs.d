@@ -1,5 +1,5 @@
 (use-package go-mode
-  :ensure t
+  :straight t
   :defer t
 
   :init
@@ -27,7 +27,7 @@
 			  ("C-," . 'pop-tag-mark)))
 
 (use-package flycheck-golangci-lint
-  :ensure t
+  :straight t
   :hook (go-mode . flycheck-golangci-lint-setup))
 
 ;; define custom functions for option-snippet

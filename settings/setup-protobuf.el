@@ -1,5 +1,5 @@
 (use-package protobuf-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (provide 'setup-protobuf)

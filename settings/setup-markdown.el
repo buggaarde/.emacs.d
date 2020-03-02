@@ -1,5 +1,5 @@
 (use-package markdown-mode
-  :ensure t
+  :straight t
   :defer t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -7,6 +7,11 @@
 		 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown")
 
-  :hook ((markdown-mode . (lambda () (visual-line-mode)))))
+  :hook ((markdown-mode . (lambda () (visual-line-mode)))
+		 (markdown-mode . (lambda ()
+							(setq buffer-face-mode-face
+								  '(:family "Baskerville" :height 180))
+							(buffer-face-mode)))))
+
 
 (provide 'setup-markdown)

@@ -1,13 +1,14 @@
 (use-package lsp-mode
-  :ensure t
+  :straight t
   :custom
   (lsp-prefer-flymake nil)
   
   :config
   (use-package lsp-ui
-  	:ensure t
+  	:straight t
 	:custom
-	(lsp-ui-doc-enable nil)
+	(lsp-ui-doc-delay 1.2)
+	(lsp-ui-doc-enable t)
 	(lsp-ui-doc-position 'at-point)
 	;; (lsp-ui-flycheck-enable t)
 	(lsp-ui-sideline-enable nil)

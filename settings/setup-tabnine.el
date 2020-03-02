@@ -1,5 +1,5 @@
 (use-package company
-  :ensure t
+  :straight t
   :config
   ;; Trigger completion immediately.
   (setq company-idle-delay 0)
@@ -16,9 +16,10 @@
           company-echo-metadata-frontend)))
 
 (use-package company-tabnine
-  :ensure t
+  :straight t
   :after company
   :init
-  (add-to-list 'company-backends #'company-tabnine))
+  (add-to-list 'company-backends #'company-tabnine)
+  (add-to-list 'company-backends #'company-c-headers))
 
 (provide 'setup-tabnine)

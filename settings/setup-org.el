@@ -1,10 +1,10 @@
 (use-package org
-  :ensure t
+  :straight t
   :defer t
 
   :config
   (use-package ox-pandoc
-	:ensure t
+	:straight t
 
 	:config
 	;; set column-width for README.md exports

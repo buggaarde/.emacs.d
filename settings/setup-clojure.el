@@ -1,5 +1,5 @@
 (use-package clojure-mode
-  :ensure t
+  :straight t
   :defer t
 
   :config
@@ -7,7 +7,7 @@
 	:ensure t)
   
   (use-package clj-refactor
-	:ensure t
+	:straight t
 	:diminish clj-refactor-mode
 
 	:config
