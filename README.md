@@ -7,7 +7,7 @@ My personal Emacs setup
 Clone the repository into your root directory (or where ever you keep your dotfiles) with
 
 ``` shell
-git clone https://github.com/buggaarde/dot-emacs .
+git clone https://github.com/buggaarde/.emacs.d .
 ```
 
 On first start up, a few packages will be installed.
