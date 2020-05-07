@@ -1,11 +1,19 @@
-(use-package doom-themes
-  :straight t
+;; -*- lexical-binding: t; -*-
 
-  :config
-  (setq doom-themes-enable-bold t
-		doom-themes-enable-italic t)
+;; (use-package doom-themes
+;;   :straight t
 
-  (load-theme 'doom-nord-light))
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;; 		doom-themes-enable-italic t)
+
+;;   (load-theme 'doom-nord))
+
+(use-package white-sand-theme
+  :straight (white-sand-theme
+			 :type git :host github
+			 :repo "mswift42/white-sand-theme")
+  :config (load-theme 'white-sand))
 
 ;; Set fonts
 ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 150)

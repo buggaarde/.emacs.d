@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun fira-code-mode--make-alist (list)
   "Generate prettify-symbols alist from LIST."
   (let ((idx -1))

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package clojure-mode
   :straight t
   :defer t

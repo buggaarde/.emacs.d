@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package org-roam
   :straight (:host github :repo "jethrokuan/org-roam")
   :after org

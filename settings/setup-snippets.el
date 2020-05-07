@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package yasnippet
   :straight t
   :defer t
@@ -7,7 +9,7 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
   (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
   (setq yas-verbosity 1)
-  ;; (yas-global-mode t)
+  (yas-global-mode t)
 
   :hook (prog-mode . yas-minor-mode))
 

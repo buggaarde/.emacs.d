@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package writeroom-mode
   :defer t
   :straight t)

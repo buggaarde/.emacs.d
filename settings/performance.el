@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Increase garbage collection threshold during startup
 (defun defer-garbage-collection-h ()
   (setq gc-cons-threshold most-positive-fixnum))

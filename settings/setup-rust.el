@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package rust-mode
   :ensure t
   :init
@@ -5,3 +7,5 @@
   
   :hook
   (rust-mode . (lambda () (setq indent-tabs-mode nil))))
+
+(provide 'setup-rust)

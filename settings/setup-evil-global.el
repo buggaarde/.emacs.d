@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (evil-leader/set-key
   ;; basic navigation
   "e" 'find-file

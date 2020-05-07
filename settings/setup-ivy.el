@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package ivy
   :straight t
   :diminish ivy-mode

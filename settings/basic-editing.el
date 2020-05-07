@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; We want to remove transient mark mode
 (transient-mark-mode 1)
 

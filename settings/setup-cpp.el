@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun gtags-root-dir ()
   "Returns GTAGS root directory or nil if doesn't exist."
   (with-temp-buffer

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package lsp-mode
   :straight t
   :defer t

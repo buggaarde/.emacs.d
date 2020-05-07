@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (if (eq system-type 'darwin)
     (progn
       (setq default-input-method "MacOSX")

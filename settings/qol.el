@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Attempt to split horizontally a bit more
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)

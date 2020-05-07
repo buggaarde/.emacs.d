@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun option-list (text)
   (if (string= text "") ""
 	(let ((lines (s-lines text))
