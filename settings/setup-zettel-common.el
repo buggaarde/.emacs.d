@@ -20,4 +20,11 @@
 	  (insert-file-contents filename)
 	  (zettel--title-of-note-in-current-buffer))))
 
+(defun zettel--org-extracted-headline-by-name (ast name)
+  (org-element-map ast 'headline
+	(lambda (h)
+	  (when (string= (org-element-property :raw-value h) name)
+		h))
+	nil t))
+
 (provide 'setup-zettel-common)

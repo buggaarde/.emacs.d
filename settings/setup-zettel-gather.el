@@ -3,52 +3,97 @@
 (require 'cl-lib)
 (require 'setup-zettel-common)
 
-(defun zettel--copy-note-from-file (buffer filename &optional level)
+(defun zettel--copy-note-from-file (buffer filename)
   "Copy the contents of the Note headline in FILE and insert them into BUFFER.
 Create a buffer called BUFFER if not already existing."
   (with-current-buffer (get-buffer-create buffer)
 	(let* ((title (zettel--title-of-note-in-file filename))
+		   (type (get-text-property 0 :type filename))
+		   (level (get-text-property 0 :level filename))
 		   (ast (zettel--org-element-parse-file filename))
-		   (notes (org-element-extract-element
-				   (org-element-map ast 'headline
-					 (lambda (h)
-					   (when (string= (org-element-property :raw-value h) "Note")
-						 h))
-					 nil t)))
+		   (notes (zettel--org-extracted-headline-by-name ast "Note"))
 		   (note (org-element-map notes 'section #'identity nil t))
 		   (note (when note (org-element-extract-element note))))
-	  (insert
-	   (org-element-interpret-data
-		`(headline (:level ,(or level 2) :title ,title :post-blank 1) ,note))))))
+	  (cond
+	   ((eq type :singular)
+		;; insert title as bold, and the note underneath
+		(insert
+		 (org-element-interpret-data
+		  `((bold
+			 ()	(underline
+				 () (radio-target () ,title)))
+			"\n" ,note))))
+	   ((eq type :branch)
+		;; insert the title as a heading with the level associated with it
+		(insert
+		 (org-element-interpret-data
+		  `(headline
+			(:level ,level
+					:title (radio-target () ,title)
+					:post-blank 1)
+			,note))))
+	   ((eq type :root)
+		;; just insert the title as headline and contents
+		(insert
+		 (org-element-interpret-data
+		  `(headline
+			(:level ,level
+					:title (radio-target () ,title)
+					:post-blank 1)
+			,note))))))))
 
 (defun zettel--all-links-in-file (filename)
   (let* ((ast (zettel--org-element-parse-file filename))
-		 (refs (org-element-map ast 'headline
-				 (lambda (h)
-				   (when (string= (org-element-property :raw-value h) "References")
-					 h))
-				 nil t))
+		 (refs (zettel--org-extracted-headline-by-name ast "References"))
 		 (links (org-element-map refs 'link #'identity)))
 	(mapcar #'org-element-extract-element links)))
 
-(defvar zettel-non-children-prefixes '("<:")
-  "If a link description begins with anything in this list, it is not considered a child node.")
+(setq zettel-non-children-prefixes '("<:"))
 
-(defun)
+(defun zettel--link-description-has-non-child-prefix? (link)
+  (let ((match? nil))
+	(dolist (pre zettel-non-children-prefixes match?)
+	  (let* ((desc (zettel--link-description link))
+			 (desc-matches? (string-prefix-p pre desc)))
+		(setq match? (or match? desc-matches?))))
+	match?))
+
+(defun zettel--link-description (link)
+  (car (org-element-contents link)))
+
+(defun zettel--all-children-in-file (filename)
+  (when-let* ((ast (zettel--org-element-parse-file filename))
+			  (refs (zettel--org-headline-by-name ast "References"))
+			  (links (org-element-map refs 'link #'identity))
+			  (children (seq-remove
+						 #'zettel--link-description-has-non-child-prefix?
+						 links))
+			  (child-paths (cl-loop for c in children
+									collect (org-element-property :path c)))
+			  (num-children (length children))
+			  (parent-level (get-text-property 0 :level filename)))
+	(if (= num-children 1)
+		(progn
+		  `(,(propertize (car child-paths) :type :singular :level parent-level)))
+	  (progn
+		(cl-loop for c in child-paths
+				 collect (propertize c :type :branch :level (1+ parent-level)))))))
 
 (defun zettel--depth-first-search-link-filenames ()
-  (let* ((file (file-name-nondirectory (buffer-file-name)))
+  (let* ((file (propertize
+				(file-name-nondirectory (buffer-file-name))
+				:type :root :level 1))
 		 (stack (list file))
 		 (visited-notes (list)))
 	(while stack
 	  (let* ((filename (pop stack))
-			 (links (zettel--all-links-in-file filename)))
+			 (links (zettel--all-children-in-file filename)))
 		(unless (member filename visited-notes)
 		  (progn
 			(push filename visited-notes)
 			(when links
 			  (cl-loop for l in (nreverse links) do
-					   (push (org-element-property :path l) stack)))))))
+					   (push l stack)))))))
 	(nreverse visited-notes)))
 
 (defun zettel-gather-notes-beginning-here ()
