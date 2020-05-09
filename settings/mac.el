@@ -18,8 +18,13 @@
 (use-package exec-path-from-shell
   :straight (exec-path-from-shell :type git :host github :repo "purcell/exec-path-from-shell"))
 
-;; (if (eq system-type 'darwin) 
-;; 	(exec-path-from-shell-initialize))  
+(defun my-path-from-shell ()
+  (progn
+	(exec-path-from-shell-initialize)
+	(remove-hook 'pre-command-hook 'my-path-from-shell)))
+
+(if (eq system-type 'darwin)
+	(add-hook 'pre-command-hook 'my-path-from-shell))
 
 (provide 'mac)
 
