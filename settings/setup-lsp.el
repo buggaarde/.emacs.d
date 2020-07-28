@@ -2,14 +2,12 @@
 
 (use-package lsp-mode
   :straight t
-  :defer t
   :custom
   (lsp-prefer-flymake nil)
   
   :config
   (use-package lsp-ui
   	:straight t
-	:defer t
 	:custom
 	(lsp-ui-doc-delay 1.2)
 	(lsp-ui-doc-enable t)
@@ -27,13 +25,21 @@
         (lsp-ui-doc-mode 1)))
 
 	:bind (:map lsp-mode-map
-				("C-c d" . ladicle/toggle-lsp-ui-doc)))
+				("C-c d" . ladicle/toggle-lsp-ui-doc))
+	
+	:commands lsp-ui-mode)
 
-  ;; (use-package company-lsp
-  ;; 	:ensure t
-  ;; 	:hook (lsp-mode . company-lsp))
   
-  :hook (prog-mode . lsp)
-  :commands lsp)
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+  (defun lsp-go-install-save-hooks ()
+  	(add-hook 'before-save-hook #'lsp-format-buffer t t)
+  	(add-hook 'before-save-hook #'lsp-organize-imports t t))
+  
+  :hook ((go-mode . lsp-deferred)
+		 (go-mode . lsp-go-install-save-hooks)
+		 (c++-mode . lsp-deferred))
+  
+  :commands (lsp lsp-deferred))
 
 (provide 'setup-lsp)
