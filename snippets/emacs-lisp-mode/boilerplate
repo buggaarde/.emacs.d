@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: boilerplate
+# key: boilerplate
+# --
+;;; ${1:`(file-name-base (buffer-file-name))`} --- Description of your package
+
+;; Copyright (c) `(format-time-string "%Y")` Simon Bugge Siggaard
+
+;; Author: Simon Bugge Siggaard <simsig@gmail.com>
+;; Maintainer: Simon Bugge Siggaard <simsig@gmail.com>
+;; Created: ${2:`(format-time-string "%d %B %Y")`}
+;; Version: ${3:0.1}
+;; Keywords: ${4:some keywords here}
+;; URL: https://github.com/buggaarde/$1
+
+
+;;; Commentary:
+
+
+;;; Code:
+
+$0
+
+(provide '$1)
+
+;; Local Variables:
+;; lexical-binding: t
+;; End:
+
+;;; $1.el ends here
