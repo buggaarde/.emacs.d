@@ -2,7 +2,6 @@
 
 (use-package go-mode
   :straight t
-  :defer t
 
   :init
   (setenv "GOPATH" "/Users/simonbuggesiggaard/go")
@@ -15,10 +14,13 @@
   ;; (setq godef-command (concat (getenv "GOPATH") "/bin/misspell"))
   ;; (setq godef-command (concat (getenv "GOPATH") "/bin/golint"))
 
-  (add-hook 'go-mode-hook '(lambda ()
-							 (add-hook 'before-save-hook 'gofmt-before-save)))
-  (add-hook 'flycheck-mode-hook '(lambda ()
-								   (add-to-list 'flycheck-checkers 'go-golint)))
+  ;; (add-hook
+  ;;  'go-mode-hook
+  ;;  (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
+  
+  ;; (add-hook
+  ;;  'flycheck-mode-hook
+  ;;  (lambda () (add-to-list 'flycheck-checkers 'go-golint)))
 
   (use-package go-autocomplete
 	:load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs")
