@@ -1,9 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package rust-mode
-  :ensure t
-  :init
-  (setq rust-format-on_save t)
+  :straight t
+  :config
+  (setq rust-format-on-save t)
   
   :hook
   (rust-mode . (lambda () (setq indent-tabs-mode nil))))
