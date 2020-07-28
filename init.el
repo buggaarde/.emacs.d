@@ -27,7 +27,7 @@
 (setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
 
 (custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ '(initial-frame-alist '((fullscreen . maximized))))
 
 
 ;; Set path to dependencies
@@ -97,6 +97,7 @@
 (require 'setup-projectile)
 
 ;; Setup basic programming utilities
+(require 'setup-avy)
 (require 'setup-paredit)
 (require 'setup-autocomplete)
 (require 'setup-snippets)
@@ -105,9 +106,7 @@
 (require 'setup-diff-hl)
 (require 'setup-expand-region)
 (require 'setup-multiple-cursors)
-
-;; Setup org-roam
-(require 'setup-org-roam)
+(require 'setup-drag-stuff)
 
 ;; Setup Language Server Protocol and TabNine
 (require 'setup-lsp)
@@ -121,8 +120,14 @@
 (require 'setup-elm)
 (require 'setup-flycheck)
 (require 'setup-go)
+(require 'setup-rust)
 (require 'setup-markdown)
+(require 'setup-doct)
+;;;; the following three are order-dependent
+;; (require 'setup-deft)
 (require 'setup-org)
+(require 'setup-org-zk)
+;; (require 'setup-zettel)
 (require 'setup-protobuf)
 (require 'setup-python)
 
@@ -130,6 +135,8 @@
 (require 'setup-writing)
 ;; (require 'setup-dnd)
 (require 'setup-esup)
+(require 'setup-cucumber)
+(require 'setup-buttercup)
 
 ;; EVIL
 ;; (require 'setup-evil)
