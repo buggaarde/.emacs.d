@@ -15,13 +15,11 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-virtual-abbreviate 'full)
 
-  ;; (setq ivy-re-builders-alist
-  ;; 		'((ivy-switch-buffer . ivy--regex-plus)
-  ;; 		  (t . ivy--regex-fuzzy)))
-
   (use-package counsel
 	:straight t
 	:bind (("C-s" . swiper)
-		   ("M-x" . counsel-M-x))))
+		   ("M-x" . counsel-M-x)
+		   ("C-x C-f" . counsel-find-file)
+		   ("C-c C-r" . ivy-resume))))
 
 (provide 'setup-ivy)
