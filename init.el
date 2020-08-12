@@ -142,6 +142,6 @@
 (require 'setup-buttercup)
 
 ;; EVIL
-;; (require 'setup-evil)
+(require 'setup-evil)
 
 ;;; init.el ends here
