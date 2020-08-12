@@ -40,12 +40,6 @@
   :defer t
   :bind (("C-x o" . ace-window))
   :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
-
-;; Avy jump mode
-(use-package avy
-  :straight t
-  :config (setq avy-style 'words)
-  :bind (("C-æ" . avy-goto-subword-1)))
+  (setq aw-keys '(?t ?h ?e ?n ?a ?i)))
 
 (provide 'qol)
