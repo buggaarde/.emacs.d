@@ -95,6 +95,7 @@
 
 ;; Setup search and minibuffer navigation
 (require 'setup-ivy)
+(require 'setup-smex)
 ;; (require 'setup-helm)
 (require 'setup-projectile)
 
