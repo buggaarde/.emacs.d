@@ -15,7 +15,8 @@
   "o" 'ace-window
   "g" 'magit-status
   "c" 'comment-dwim-2
-  "<SPC>" 'avy-goto-word-or-subword-1
+  "<SPC>" 'avy-goto-char-timer
+  "+" 'balance-windows
 
   ;; projectile bindings
   "pp" 'counsel-projectile-switch-project
