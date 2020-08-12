@@ -65,8 +65,10 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-;; Load color theme and fonts
+;; Load color theme, modeline, icons and fonts
 (require 'appearance)
+(require 'setup-all-the-icons)
+(require 'setup-doom-modeline)
 
 ;; Set personal information
 (setq user-full-name "Simon Bugge Siggaard"
