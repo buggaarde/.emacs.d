@@ -29,52 +29,55 @@
 				 :file "~/everything/everything.org"
 				 :prepend t
 				 :template ("* %{todo-state} %?"
-							"_Desired outcome:_")
-				 :todo-state "Review"))))
+							"Captured on: %U")
+				 :todo-state "TODO"))))
   
   (setq org-refile-targets
-		'((nil :maxlevel . 1)
-		  (org-agenda-files :maxlevel . 2)))
+      '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")))
   
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+
+  (setq org-log-done 'time)
+
   ;;; Custom agenda-views
   (setq org-agenda-custom-commands
-        '(("n" "Next Actions"
-           ((agenda "")
-            (todo "NextAction")))
-          ("r" "Reviews"
-           ((todo "Review")))
-          ("p" "Projects"
-           ((todo "Project")))
-          ("w" "Weekly review"
-           ((agenda "fortnight")
-            (todo "Review")
-            (todo "Project")
-            (todo "NextAction")
-            (todo "Someday/Maybe")))))
+        '(("g" "Get Things Done"
+         ((agenda nil
+                  ((org-agenda-skip-function
+                    '(org-agenda-skip-entry-if 'deadline))
+				   (org-agenda-hide-tags-regexp ".*")
+                   (org-deadline-warning-days 0)))
+          (todo "NEXT"
+                ((org-agenda-skip-function
+                  '(org-agenda-skip-entry-if 'deadline))
+                 (org-agenda-prefix-format "  %i %-12:c [%e] ")
+				 (org-agenda-hide-tags-regexp ".*")
+                 (org-agenda-overriding-header "Tasks\n")))
+          (agenda nil
+                  ((org-agenda-entry-types '(:deadline))
+                   (org-agenda-format-date "")
+                   (org-deadline-warning-days 7)
+				   (org-agenda-hide-tags-regexp ".*")
+                   (org-agenda-skip-function
+                    '(org-agenda-skip-entry-if 'notregexp "\\* TODO"))
+                   (org-agenda-overriding-header "Deadlines\n")))
+		  (tags-todo "projects"
+                ((org-agenda-skip-function
+                  '(org-agenda-skip-entry-if 'deadline 'todo '("NEXT")))
+                 (org-agenda-prefix-format "  %i %-12:c [%e] ")
+				 (org-agenda-hide-tags-regexp ".*")
+                 (org-agenda-overriding-header "Projects\n")))
+          (tags-todo "review"
+                     ((org-agenda-prefix-format "  %?-12t% s")
+					  (org-agenda-hide-tags-regexp ".*")
+                      (org-agenda-overriding-header "Inbox\n")))
+          (tags "CLOSED>=\"<today>\""
+                ((org-agenda-overriding-header "Completed today\n")))))))
 
-  (setq org-todo-keyword-faces
-        '(;; prettier, fuller green than "green"
-		  ("DONE" . (:foreground "#15B300"))
-		  ;; same kind of red as on murder case files
-          ("CANCELLED" . (:foreground "#C91414"))
-		  ;; a dark grey that falls nicely into the background with the Jazz-color theme
-          ("DEFERRED" . (:foreground "#5E5E5E"))
-		  ;; golden yellow.
-          ("TODO" . (:foreground "#ffd700"))
-		  ;; a darker yellow than "TODO"
-          ("Waiting" . (:foreground "#AB9000"))
-		  ;; Orange/Golden
-          ("NextAction" . (:foreground "#FFBB00"))
-		  ;; light grey
-          ("Review" . (:foreground "#9E998B"))
-		  ;; Teal
-          ("Project" . (:foreground "#00FF99"))
-		  ;; Dark grey
-          ("Trashed" . (:foreground "#363636"))
-		  ;; Purple
-          ("Someday/Maybe" . (:foreground "#671B82"))
-		  ;; Lighter grey than "Review"
-          ("Tickler" . (:foreground "#E3E3E3"))))
+  (advice-add 'org-refile :after
+			  (lambda (&rest _)
+				(org-save-all-org-buffers)))
 
   (defun simon-org-archive-done-tasks ()
     (interactive)
