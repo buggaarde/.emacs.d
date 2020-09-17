@@ -22,6 +22,11 @@
   ;; Don't prompt before running code in org
   (setq org-confirm-babel-evaluate nil)
 
+  ;; org-latex-preview
+  ;; ;; Increase default latex preview scale to match text size
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+  (setq org-preview-latex-process 'dvisvgm)
+
   ;; GTD workflow:
   (setq org-agenda-files `(,(expand-file-name "~/everything/")))
   (setq org-capture-templates
