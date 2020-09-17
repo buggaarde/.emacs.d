@@ -2,7 +2,8 @@
 
 (evil-leader/set-key
   ;; basic navigation
-  "e" 'find-file
+  "s" 'swiper
+  "e" 'counsel-find-file
   "b" 'ivy-switch-buffer
   "x" 'counsel-M-x
   "k" 'kill-buffer
@@ -17,6 +18,7 @@
   "c" 'comment-dwim-2
   "<SPC>" 'avy-goto-char-timer
   "+" 'balance-windows
+  "q" 'fill-paragraph
 
   ;; projectile bindings
   "pp" 'counsel-projectile-switch-project
