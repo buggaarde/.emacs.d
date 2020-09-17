@@ -1,22 +1,26 @@
 ;; -*- lexical-binding: t; -*-
 
-;; (use-package white-sand-theme
-;;   :straight (white-sand-theme
-;; 			 :type git :host github
-;; 			 :repo "mswift42/white-sand-theme")
-;;   :config (load-theme 'white-sand))
+(use-package white-sand-theme
+  :straight (white-sand-theme
+			 :type git :host github
+			 :repo "mswift42/white-sand-theme")
+  :config (load-theme 'white-sand))
 
 
-(use-package doom-themes
-  :straight t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-tomorrow-night t)
+;; (use-package doom-themes
+;;   :straight t
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-tomorrow-night t)
   
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
+;; (use-package modus-operandi-theme
+  ;; :straight t
+  ;; :config
+  ;; (load-theme 'modus-operandi))
 
 ;; Set fonts
 ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 150)
