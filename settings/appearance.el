@@ -24,9 +24,9 @@
 
 ;; Set fonts
 ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 150)
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 150)
 (require 'jetbrains-mono-mode)
-(add-hook 'prog-mode-hook jetbrains-ligature-mode)
+;; (add-hook 'prog-mode-hook 'jetbrains-ligature-mode)
 ;; (require 'fira-code-mode)
 ;; (set-face-attribute 'default nil :font "Fira Code" :height 150)
 ;; (use-package fira-code-mode
