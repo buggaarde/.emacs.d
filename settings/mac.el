@@ -16,7 +16,9 @@
       (define-key key-translation-map (kbd "M-s-7") (kbd "M-|"))))
 
 (use-package exec-path-from-shell
-  :straight (exec-path-from-shell :type git :host github :repo "purcell/exec-path-from-shell"))
+  :straight (exec-path-from-shell
+			 :type git :host github
+			 :repo "purcell/exec-path-from-shell"))
 
 (defun my-path-from-shell ()
   (progn

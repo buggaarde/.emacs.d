@@ -16,6 +16,7 @@
 
 ;; Use Garbage Collection Magic Hack to only garbage collect during idle or zone-outs
 (require 'gcmh)
+
 (with-eval-after-load 'gcmh
   (setq gcmh-idle-delay 10
 		;; gcmh-verbose t

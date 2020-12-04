@@ -4,7 +4,7 @@
   :straight t
 
   :init
-  (setenv "GOPATH" "/Users/simonbuggesiggaard/go")
+  (setenv "GOPATH" "/home/siggaard/go")
 
   :config
   (add-to-list 'exec-path (concat (getenv "GOPATH") "/src/github.com/nsf/gocode"))
@@ -23,7 +23,7 @@
   ;;  (lambda () (add-to-list 'flycheck-checkers 'go-golint)))
 
   (use-package go-autocomplete
-	:load-path  "/Users/simonbuggesiggaard/go/src/github.com/nsf/gocode/emacs")
+	:load-path  "/home/siggaard/go/src/github.com/nsf/gocode/emacs")
   
   :bind (:map go-mode-map
 			  ("C-." . 'godef-jump)

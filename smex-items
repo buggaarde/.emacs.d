@@ -1,0 +1,58 @@
+
+;; ----- smex-history -----
+(
+ lsp
+ pop-global-mark
+ pop-tag-mark
+ project-find-file
+ project-search
+ lsp-describe-session
+ lsp-goto-type-definition
+)
+
+;; ----- smex-data -----
+(
+ (all-the-icons-install-fonts . 1)
+ (visual-line-mode . 2)
+ (lsp . 15)
+ (shell-command . 2)
+ (siggaard/swap-evil-j-and-k . 3)
+ (package-install . 1)
+ (eval-buffer . 7)
+ (exwm-workspace-switch . 2)
+ (revert-buffer . 12)
+ (flycheck-next-error . 2)
+ (bookmark-set . 1)
+ (hl-todo-mode . 4)
+ (hl-todo-occur . 5)
+ (hl-todo-insert . 2)
+ (flycheck-list-errors . 1)
+ (flycheck-golangci-lint-setup . 3)
+ (flycheck-select-checker . 3)
+ (projectile-grep . 2)
+ (lsp-python-ms-update-server . 2)
+ (toggle-debug-on-error . 4)
+ (blacken-buffer . 2)
+ (replace-regexp . 11)
+ (rename-buffer . 1)
+ (dired . 1)
+ (eshell . 2)
+ (google-make-newline-indent . 3)
+ (straight-pull-all . 1)
+ (org-set-tags-command . 1)
+ (org-priority . 1)
+ (describe-variable . 1)
+ (regexp-builder . 1)
+ (simon-org-archive-done-tasks . 1)
+ (org-set-property . 2)
+ (yas-new-snippet . 1)
+ (yas-reload-all . 2)
+ (writeroom-mode . 2)
+ (lsp-goto-implementation . 1)
+ (lsp-goto-type-definition . 2)
+ (lsp-describe-session . 1)
+ (project-find-file . 4)
+ (project-search . 1)
+ (pop-tag-mark . 1)
+ (pop-global-mark . 1)
+)

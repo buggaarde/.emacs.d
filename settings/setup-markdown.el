@@ -9,11 +9,7 @@
 		 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown")
 
-  :hook ((markdown-mode . (lambda () (visual-line-mode)))
-		 (markdown-mode . (lambda ()
-							(setq buffer-face-mode-face
-								  '(:family "Baskerville" :height 180))
-							(buffer-face-mode)))))
+  :hook ((markdown-mode . (lambda () (visual-line-mode)))))
 
 
 (provide 'setup-markdown)

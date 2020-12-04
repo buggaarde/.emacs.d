@@ -24,13 +24,21 @@
 (custom-set-variables
  '(flycheck-c/c++-googlelint-executable "/usr/local/bin/cpplint"))
 
-(eval-after-load 'flycheck
-  '(progn
-     (require 'flycheck-google-cpplint)
-     ;; Add Google C++ Style checker.
-     ;; In default, syntax checked by Clang and Cppcheck.
-     (flycheck-add-next-checker 'c/c++-cppcheck
-                                '(warning . c/c++-googlelint))))
+(use-package flycheck-google-cpplint
+  :straight t
+  :after flycheck
+  :config
+  (flycheck-add-next-checker
+   'c/c++-cppcheck
+   '(warning . c/c++-googlelint)))
+
+;; (eval-after-load 'flycheck
+;;   '(progn
+;;      (require 'flycheck-google-cpplint)
+;;      ;; Add Google C++ Style checker.
+;;      ;; In default, syntax checked by Clang and Cppcheck.
+;;      (flycheck-add-next-checker 'c/c++-cppcheck
+;;                                 '(warning . c/c++-googlelint))))
 
 (use-package flycheck-clang-tidy
   :straight t
@@ -79,9 +87,7 @@
   
   
   :hook (((c-mode c++-mode cc-mode asm-mode) . helm-gtags-mode)
-		 (after-save . gtags-update-hook)
-		 (c-mode-common . google-set-c-style)
-		 (c-mode-common . google-make-newline-indent))
+		 (after-save . gtags-update-hook))
 
   :bind (:map helm-gtags-mode-map
 		 ("C-c t a" . 'helm-gtags-tags-in-this-function)

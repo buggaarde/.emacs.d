@@ -14,6 +14,8 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+(setq fill-column 89)
+
 ;; Sacha Chuang's smarter-move-to-beginning-of-line
 (defun sacha/smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.

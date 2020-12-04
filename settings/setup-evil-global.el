@@ -21,8 +21,7 @@
   "q" 'fill-paragraph
 
   ;; projectile bindings
-  "pp" 'counsel-projectile-switch-project
-  "pf" 'counsel-projectile-find-file
-  "pb" 'counsel-projectile-switch-to-buffer)
+  "pf" 'project-find-file
+  "ps" 'project-search)
 
 (provide 'setup-evil-global)

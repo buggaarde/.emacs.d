@@ -44,7 +44,10 @@
   (setq org-outline-path-complete-in-steps nil)
 
   (setq org-log-done 'time)
+  (setq org-agenda-span 14)
 
+  (setq org-lowest-priority ?D)
+  (setq org-default-priority ?D)
   ;;; Custom agenda-views
   (setq org-agenda-custom-commands
         '(("g" "Get Things Done"
@@ -56,13 +59,15 @@
           (todo "NEXT"
                 ((org-agenda-skip-function
                   '(org-agenda-skip-entry-if 'deadline))
+				 (org-agenda-sorting-strategy
+				  '(priority-down effort-up category-keep))
                  (org-agenda-prefix-format "  %i %-12:c [%e] ")
 				 (org-agenda-hide-tags-regexp ".*")
                  (org-agenda-overriding-header "Tasks\n")))
           (agenda nil
                   ((org-agenda-entry-types '(:deadline))
                    (org-agenda-format-date "")
-                   (org-deadline-warning-days 7)
+                   (org-deadline-warning-days 28)
 				   (org-agenda-hide-tags-regexp ".*")
                    (org-agenda-skip-function
                     '(org-agenda-skip-entry-if 'notregexp "\\* TODO"))

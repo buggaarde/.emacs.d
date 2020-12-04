@@ -20,11 +20,11 @@
 (setq inhibit-splash-screen t)
 
 ;; Start Emacs in full-screen on second monitor, if there
-(setq workarea (cdr (assoc 'workarea (nth 0 (last (display-monitor-attributes-list))))))
-(setq width-offset (nth 0 workarea))
-(setq height-offset (nth 1 workarea))
+;; (setq workarea (cdr (assoc 'workarea (nth 0 (last (display-monitor-attributes-list))))))
+;; (setq width-offset (nth 0 workarea))
+;; (setq height-offset (nth 1 workarea))
 
-(setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
+;; (setq default-frame-alist `((top + ,height-offset) (left + ,width-offset)))
 
 (custom-set-variables
  '(initial-frame-alist '((fullscreen . maximized))))
@@ -40,7 +40,7 @@
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(require 'performance)
+;; (require 'performance)
 
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
@@ -56,6 +56,10 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; Make sure that org doesn't break when using straight
+(straight-use-package 'org)
+(straight-use-package 'org-plus-contrib)
+
 ;; Make sure that use-package is installed
 (straight-use-package 'use-package)
 (use-package diminish
@@ -66,9 +70,10 @@
 (load custom-file)
 
 ;; Load color theme, modeline, icons and fonts
+;; (require 'setup-exwm)
 (require 'appearance)
-(require 'setup-all-the-icons)
-(require 'setup-doom-modeline)
+;; (require 'setup-all-the-icons)
+;; (require 'setup-doom-modeline)
 
 ;; Set personal information
 (setq user-full-name "Simon Bugge Siggaard"
@@ -77,6 +82,7 @@
 ;; Load OS specific settings
 (require 'iso-transl)
 (require 'mac)
+(require 'ubuntu)
 
 ;; Better backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -97,7 +103,9 @@
 (require 'setup-ivy)
 (require 'setup-smex)
 ;; (require 'setup-helm)
-(require 'setup-projectile)
+(require 'setup-project)
+(require 'setup-bookmark+)
+(require 'setup-hl-todo)
 
 ;; Setup basic programming utilities
 (require 'setup-avy)
@@ -113,11 +121,11 @@
 
 ;; Setup Language Server Protocol and TabNine
 (require 'setup-lsp)
-(require 'setup-tabnine)
+;; (require 'setup-tabnine)
 
 ;; Specific programming languages and modes
 (require 'setup-clojure)
-(require 'setup-cpp)
+;; (require 'setup-cpp)
 (require 'setup-docker)
 (require 'setup-haskell)
 (require 'setup-elm)
@@ -129,9 +137,9 @@
 ;;;; the following three are order-dependent
 ;; (require 'setup-deft)
 (require 'setup-org)
-(require 'setup-org-zk)
+;; (require 'setup-org-zk)
 ;; (require 'setup-zettel)
-(require 'setup-protobuf)
+;; (require 'setup-protobuf)
 (require 'setup-python)
 
 ;; Misc
