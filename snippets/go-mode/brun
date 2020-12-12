@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: b.Run
+# key: brun
+# --
+b.Run("$1", func(b *testing.B) {
+	$0
+})
