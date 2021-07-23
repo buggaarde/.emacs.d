@@ -42,6 +42,10 @@
 
 ;; (require 'performance)
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -137,12 +141,13 @@
 ;;;; the following three are order-dependent
 ;; (require 'setup-deft)
 (require 'setup-org)
-;; (require 'setup-org-zk)
+(require 'setup-org-zk)
 ;; (require 'setup-zettel)
 ;; (require 'setup-protobuf)
 (require 'setup-python)
 
 ;; Misc
+(require 'setup-olivetti-mode)
 (require 'setup-writing)
 ;; (require 'setup-dnd)
 (require 'setup-esup)
@@ -151,5 +156,6 @@
 
 ;; EVIL
 (require 'setup-evil)
+(require 'setup-evil-cleverparens)
 
 ;;; init.el ends here
