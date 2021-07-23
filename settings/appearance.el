@@ -6,7 +6,7 @@
 ;; 			 :repo "mswift42/white-sand-theme")
 ;;   :config (load-theme 'white-sand))
 
-;; the cursor in default white-sand is too similar to the hl-line color, so we make it slightly darker.
+;; ;; the cursor in default white-sand is too similar to the hl-line color, so we make it slightly darker.
 ;; (set-cursor-color "#999999")
 
 ;; (use-package eink-theme
@@ -15,13 +15,16 @@
 ;; 			 :repo "maio/eink-emacs")
 ;;   :config (load-theme 'eink))
 
+;; Use tree-sitter for syntax highlighting whereever available
+(require 'setup-tree-sitter)
 
 (use-package doom-themes
   :straight t
   :config
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold nil    ; if nil, bold is universally disabled
-        doom-themes-enable-italic nil) ; if nil, italics is universally disabled
+  (setq doom-themes-enable-bold nil
+        doom-themes-enable-italic nil
+		doom-gruvbox-brighter-comments t)
   (load-theme 'doom-gruvbox t)
   
   ;; Corrects (and improves) org-mode's native fontification.
@@ -39,7 +42,7 @@
 ;;   :config
 ;;   (load-theme 'jetbrains-darcula t))
 
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 110)
-(require 'jetbrains-mono-mode)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 200)
+;; (require 'jetbrains-mono-mode)
 
 (provide 'appearance)

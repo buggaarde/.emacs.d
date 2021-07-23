@@ -4,6 +4,8 @@
   :straight t
   :custom
   (lsp-prefer-flymake nil)
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-eldoc-render-all t)
   
   :config
   (use-package lsp-ui
@@ -38,7 +40,10 @@
   
   :hook ((go-mode . lsp-deferred)
 		 (go-mode . lsp-go-install-save-hooks)
-		 (c++-mode . lsp-deferred))
+		 (c++-mode . lsp-deferred)
+		 (rust-mode . lsp-deferred))
+  
+  :bind (("C-." . 'lsp-find-definition))
   
   :commands (lsp lsp-deferred))
 

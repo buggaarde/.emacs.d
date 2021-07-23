@@ -19,9 +19,33 @@
   "<SPC>" 'avy-goto-char-timer
   "+" 'balance-windows
   "q" 'fill-paragraph
+  "," 'pop-tag-mark
+  ":" 'goto-line
 
-  ;; projectile bindings
+  ;; org-zk
+  "zo" 'org-zk-open-note
+  "zn" 'org-zk-create-empty-note-and-open
+  "zN" 'org-zk-create-note-with-title-and-open
+  "zl" 'org-zk-insert-backlink
+  "zb" 'org-zk-add-backlink-to-references
+  "zf" 'org-zk-add-folge-backlink-to-references
+  "zg" 'org-zk-gather-notes-beginning-here
+  "zW" 'org-zk-save-all-notes
+
+  ;; lsp
+  "." 'lsp-find-definition
+  "lj" 'lsp-ui-imenu
+  "l?" 'lsp-find-references
+  "la" 'lsp-execute-code-action
+  "lr" 'lsp-rename
+  "lq" 'lsp-workspace-restart
+  "lQ" 'lsp-workspace-shutdown
+
+  ;; project bindings
   "pf" 'project-find-file
-  "ps" 'project-search)
+  "ps" 'project-search
+
+  ;; flycheck
+  "fe" 'flycheck-list-errors)
 
 (provide 'setup-evil-global)

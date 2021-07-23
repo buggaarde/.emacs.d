@@ -1,16 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package auto-complete
+(use-package company
   :straight t
+  :defer t
+  :init
+  (setq company-backends
+		'(company-capf))
   :config
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-  (ac-set-trigger-key "TAB")
-  (ac-set-trigger-key "<tab>")
-  
-  :diminish auto-complete-mode)
-
-(use-package auto-complete-config
-  :config
-  (ac-config-default))
+  (setq company-minimum-prefix-length 1
+      company-idle-delay 0.0))
 
 (provide 'setup-autocomplete)

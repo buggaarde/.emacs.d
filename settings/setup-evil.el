@@ -11,9 +11,11 @@
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")
 	(require 'setup-evil-global)
-	(require 'setup-evil-go))
+	(require 'setup-evil-go)
+	(require 'setup-evil-rust))
 
   (evil-mode 1)
+  
   ;; rebind j and k to up and down, respectively.
   (define-key evil-motion-state-map "j" 'evil-previous-line)
   (define-key evil-motion-state-map "k" 'evil-next-line)
@@ -46,7 +48,15 @@
   (use-package evil-multiedit
 	:straight t
 	:config
-	(evil-multiedit-default-keybinds)))
+	(evil-multiedit-default-keybinds))
+
+  (use-package undo-tree
+	:straight t
+	:config (global-undo-tree-mode))
+
+  :config
+  (evil-set-undo-system 'undo-tree))
+
 
 
 

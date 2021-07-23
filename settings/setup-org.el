@@ -24,7 +24,7 @@
 
   ;; org-latex-preview
   ;; ;; Increase default latex preview scale to match text size
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.5))
   (setq org-preview-latex-process 'dvisvgm)
 
   ;; GTD workflow:

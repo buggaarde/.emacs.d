@@ -22,13 +22,9 @@
   ;;  'flycheck-mode-hook
   ;;  (lambda () (add-to-list 'flycheck-checkers 'go-golint)))
 
-  (use-package go-autocomplete
-	:load-path  "/home/siggaard/go/src/github.com/nsf/gocode/emacs")
-  
-  :bind (:map go-mode-map
-			  ("C-." . 'godef-jump)
-			  ("C-:" . 'godef-jump-other-window)
-			  ("C-," . 'pop-tag-mark)))
+  ;; (use-package go-autocomplete
+  ;; 	:load-path  "/home/siggaard/go/src/github.com/nsf/gocode/emacs")
+  )
 
 (use-package flycheck-golangci-lint
   :straight t
