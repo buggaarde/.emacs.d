@@ -41,7 +41,6 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; (require 'performance)
-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -62,7 +61,7 @@
 
 ;; Make sure that org doesn't break when using straight
 (straight-use-package 'org)
-(straight-use-package 'org-plus-contrib)
+;; (straight-use-package 'org-plus-contrib)
 
 ;; Make sure that use-package is installed
 (straight-use-package 'use-package)
@@ -76,8 +75,8 @@
 ;; Load color theme, modeline, icons and fonts
 ;; (require 'setup-exwm)
 (require 'appearance)
-;; (require 'setup-all-the-icons)
-;; (require 'setup-doom-modeline)
+(require 'setup-all-the-icons)
+(require 'setup-doom-modeline)
 
 ;; Set personal information
 (setq user-full-name "Simon Bugge Siggaard"

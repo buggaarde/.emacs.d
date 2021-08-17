@@ -1,24 +1,24 @@
 
 ;; ----- smex-history -----
 (
- lsp
- pop-global-mark
- pop-tag-mark
- project-find-file
- project-search
- lsp-describe-session
- lsp-goto-type-definition
+ tree-sitter-hl-mode
+ tree-sitter-mode
+ eval-buffer
+ package-install
+ emacs-version
+ toggle-debug-on-error
+ debugger-eval-expression
 )
 
 ;; ----- smex-data -----
 (
- (all-the-icons-install-fonts . 1)
+ (all-the-icons-install-fonts . 2)
  (visual-line-mode . 2)
  (lsp . 15)
  (shell-command . 2)
  (siggaard/swap-evil-j-and-k . 3)
- (package-install . 1)
- (eval-buffer . 7)
+ (package-install . 3)
+ (eval-buffer . 12)
  (exwm-workspace-switch . 2)
  (revert-buffer . 12)
  (flycheck-next-error . 2)
@@ -31,14 +31,14 @@
  (flycheck-select-checker . 3)
  (projectile-grep . 2)
  (lsp-python-ms-update-server . 2)
- (toggle-debug-on-error . 4)
+ (toggle-debug-on-error . 5)
  (blacken-buffer . 2)
  (replace-regexp . 11)
  (rename-buffer . 1)
  (dired . 1)
  (eshell . 2)
  (google-make-newline-indent . 3)
- (straight-pull-all . 1)
+ (straight-pull-all . 2)
  (org-set-tags-command . 1)
  (org-priority . 1)
  (describe-variable . 1)
@@ -55,4 +55,9 @@
  (project-search . 1)
  (pop-tag-mark . 1)
  (pop-global-mark . 1)
+ (debug . 1)
+ (debugger-eval-expression . 1)
+ (emacs-version . 1)
+ (tree-sitter-mode . 2)
+ (tree-sitter-hl-mode . 4)
 )

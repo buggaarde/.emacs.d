@@ -1,6 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package org
+   :defer 5
+
   :config
   (use-package ox-pandoc
 	:straight t
