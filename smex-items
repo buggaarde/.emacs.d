@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- tree-sitter-hl-mode
- tree-sitter-mode
- eval-buffer
- package-install
- emacs-version
- toggle-debug-on-error
- debugger-eval-expression
+ replace-string
+ revert-buffer
+ text-mode
+ yas-reload-all
+ yas-tryout-snippet
+ yas-new-snippet
+ replace-regexp
 )
 
 ;; ----- smex-data -----
@@ -20,7 +20,7 @@
  (package-install . 3)
  (eval-buffer . 12)
  (exwm-workspace-switch . 2)
- (revert-buffer . 12)
+ (revert-buffer . 16)
  (flycheck-next-error . 2)
  (bookmark-set . 1)
  (hl-todo-mode . 4)
@@ -33,7 +33,7 @@
  (lsp-python-ms-update-server . 2)
  (toggle-debug-on-error . 5)
  (blacken-buffer . 2)
- (replace-regexp . 11)
+ (replace-regexp . 12)
  (rename-buffer . 1)
  (dired . 1)
  (eshell . 2)
@@ -45,8 +45,8 @@
  (regexp-builder . 1)
  (simon-org-archive-done-tasks . 1)
  (org-set-property . 2)
- (yas-new-snippet . 1)
- (yas-reload-all . 2)
+ (yas-new-snippet . 2)
+ (yas-reload-all . 4)
  (writeroom-mode . 2)
  (lsp-goto-implementation . 1)
  (lsp-goto-type-definition . 2)
@@ -60,4 +60,8 @@
  (emacs-version . 1)
  (tree-sitter-mode . 2)
  (tree-sitter-hl-mode . 4)
+ (projectile-replace . 9)
+ (replace-string . 32)
+ (yas-tryout-snippet . 3)
+ (text-mode . 2)
 )

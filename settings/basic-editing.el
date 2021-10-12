@@ -14,7 +14,7 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
-(setq fill-column 89)
+(setq-default fill-column 80)
 
 ;; Sacha Chuang's smarter-move-to-beginning-of-line
 (defun sacha/smarter-move-beginning-of-line (arg)

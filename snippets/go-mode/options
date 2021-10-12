@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: options
-# binding: C-c C-g o
+# binding: C-c C-g O
 # --
 type Options struct {
 	${1:Opt type}

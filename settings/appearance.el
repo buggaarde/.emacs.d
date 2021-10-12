@@ -23,8 +23,8 @@
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold nil
-        doom-themes-enable-italic nil)
-  ;; doom-gruvbox-brighter-comments t
+        doom-themes-enable-italic nil
+		doom-one-brighter-comments nil)
   (load-theme 'doom-one t)
   
   ;; Corrects (and improves) org-mode's native fontification.
