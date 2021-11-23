@@ -1,5 +1,6 @@
 (use-package tree-sitter
-  :straight t
+  :straight (tree-sitter :host github :repo "emacs-tree-sitter/elisp-tree-sitter"
+			 :fork (:host github :repo "buggaarde/elisp-tree-sitter"))
   :init
   (use-package tree-sitter-langs
 	:straight t)
