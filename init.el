@@ -142,10 +142,11 @@
 (require 'setup-org)
 (require 'setup-org-zk)
 ;; (require 'setup-zettel)
-;; (require 'setup-protobuf)
+(require 'setup-protobuf)
 (require 'setup-python)
 
 ;; Misc
+(require 'setup-toml)
 (require 'setup-olivetti-mode)
 (require 'setup-writing)
 ;; (require 'setup-dnd)
@@ -158,3 +159,4 @@
 (require 'setup-evil-cleverparens)
 
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
