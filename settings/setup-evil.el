@@ -12,7 +12,8 @@
     (evil-leader/set-leader "<SPC>")
 	(require 'setup-evil-global)
 	(require 'setup-evil-go)
-	(require 'setup-evil-rust))
+	(require 'setup-evil-rust)
+	(require 'setup-evil-markdown))
 
   (evil-mode 1)
   

@@ -144,6 +144,7 @@
 ;; (require 'setup-zettel)
 (require 'setup-protobuf)
 (require 'setup-python)
+(require 'setup-dotnet)
 
 ;; Misc
 (require 'setup-toml)
